@@ -3,24 +3,33 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
+                bat "rmdir  /s /q Springboot"
                 bat "git clone https://github.com/Timesheet-Devops/Springboot.git"
-                bat "mvn clean -f Springboot"
+                bat "cd Springboot"
+                bat "mvn clean"
             }
         }
         stage('install') {
             steps {
-                bat "mvn install -f Springboot"
+                bat "mvn install"
             }
         }
         stage('test') {
             steps {
-                bat "mvn test -f Springboot"
+                bat "mvn test"
             }
         }
         stage('package') {
             steps {
-                bat "mvn package -f Springboot"
+                bat "mvn package"
             }
-        }
+           
+     	}
+     	stage ("Analyse avec Sonar"){
+			steps{
+				bat """mvn sonar:sonar"""
+			}
+		}
+        
     }
 }
