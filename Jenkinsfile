@@ -6,6 +6,7 @@ pipeline {
                 bat "rmdir  /s /q Springboot"
                 bat "git clone https://github.com/Timesheet-Devops/Springboot.git"
                 bat "cd Springboot"
+                bat "git checkout 'log4j&testEntreprise'"
                 bat "mvn clean"
             }
         }
