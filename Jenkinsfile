@@ -1,9 +1,5 @@
 pipeline{
-	environment{
-		/*registry = '193jmt5213/timesheet_devops'
-		registryCredential= 'dockerHub'
-		dockerImage = ''*/
-	}
+
 	agent any 
 	stages{
 		stage ('Checkout GIT'){
