@@ -3,9 +3,7 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
-               bat "rmdir  /s /q Springboot"
                 bat "git clone https://github.com/Timesheet-Devops/Springboot.git"
-                bat "git checkout 'log4j&testEntreprise'"
                 bat "mvn clean -f Springboot"
             }
         }
