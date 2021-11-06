@@ -33,14 +33,16 @@ public class MissionServiceImpl implements IMissionService {
 	
 	
 	@Override
-	public Mission MissionUpadate(Mission Miss) {
+	public Mission MissionUpdate(Mission Miss) {
 		
 		Mission existingMiss=mr.findById(Miss.getId()).orElse(null);
 		
+		
 		mr.findById(Miss.getId());
+		if (existingMiss!=null) {
 		existingMiss.setName(Miss.getName());
 		existingMiss.setDescription(Miss.getDescription());
-		
+		}
 		return mr.save(existingMiss);
 	}
 	
