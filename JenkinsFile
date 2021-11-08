@@ -1,0 +1,44 @@
+pipeline {
+	
+    agent any
+    stages {
+        stage('git repo & clean') {
+            steps {
+                bat "git clone https://github.com/Timesheet-Devops/Springboot.git"
+                bat "cd Springboot"
+                bat """git checkout TimeSheetBranch"""
+                bat "mvn clean"
+            }
+        }
+        stage('install') {
+            steps {
+                bat "mvn install"
+            }
+        }
+        stage('test') {
+            steps {
+                bat "mvn test"
+            }
+        }
+        stage('package') {
+            steps {
+                bat "mvn package"
+            }
+           
+     	}
+     	stage ("Analyse avec Sonar"){
+			steps{
+				bat """mvn sonar:sonar"""
+			}
+		}
+		stage ("Deploiement"){
+			steps{
+				bat """mvn clean package deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=timesheet -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/timesheet-1.0.jar"""
+			}
+		}
+        
+		}
+
+
+        
+    }

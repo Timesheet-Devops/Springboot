@@ -14,6 +14,8 @@
 	<version>1.0</version>
 	<name>timesheet</name>
 	<description>timesheet</description>
+	<packaging>war</packaging>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
