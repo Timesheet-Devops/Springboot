@@ -13,6 +13,7 @@ public class TimesheetSpringBootCoreDataJpaMvcRest1Application {
 	public static void main(String[] args) {
 
 	    PropertyConfigurator.configure(Paths.get(".").toAbsolutePath().normalize().toString()+"\\src\\main\\resources\\log4j2.properties");
+	    
 		SpringApplication.run(TimesheetSpringBootCoreDataJpaMvcRest1Application.class, args);
 	}
 
