@@ -1,7 +1,7 @@
-pipeline {
+pipeline {   environment {
 	registry = "hmzlz/timesheetimage"
     registryCredential = 'dockerHub'
-    agent any
+} agent any
     stages {
         stage('git repo & clean') {
             steps {
