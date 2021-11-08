@@ -1,6 +1,6 @@
 pipeline {
 	environment{
-    registry = 'g12234556/spring_app'
+    registry = "g12234556/spring_app"
     registryCredential = 'dockerHub'	}
     agent any
     stages {
