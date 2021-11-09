@@ -7,7 +7,6 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
-            
                 bat "git clone https://github.com/Timesheet-Devops/Springboot.git"
                 bat "cd Springboot"
                 bat """git checkout Amin"""
