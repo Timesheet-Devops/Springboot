@@ -2,7 +2,7 @@ pipeline {
  environment {
 	registry = "aminbencheikh/timesheet001"
     registryCredential = 'dockerHub'
-    }
+    } 
     agent any
     stages {
         stage('git repo & clean') {
