@@ -30,7 +30,7 @@ pipeline {
      	}
      	stage ("Analyse avec Sonar"){
 			steps{
-				bat """sonar:sonar"""
+				bat """mvn sonar:sonar"""
 			}
 		}
 		stage ("Deploiement"){
