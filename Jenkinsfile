@@ -6,12 +6,11 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
-                bat "rmdir  /s /q Springboot"
                 bat "git clone https://github.com/Timesheet-Devops/Springboot.git"
                 bat "cd Springboot"
                 bat """git checkout log4jtestEntreprise"""
                 bat "mvn clean"
-                bat "ren DockerFile Dockerfile"
+                
             }
         }
         stage('install') {
