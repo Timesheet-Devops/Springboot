@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
-          
+     		    bat "rmdir  /s /q Springboot"
                 bat "git clone https://github.com/Timesheet-Devops/Springboot.git"
                 bat "cd Springboot"
                 bat """git checkout Amin"""
@@ -40,13 +40,23 @@ pipeline {
 				bat """mvn clean -DskipTests package deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=Timesheet-spring-boot-core-data-jpa-mvc-REST-1 -Dversion=0.0.1 -DgeneratePom=true -Dpackaging=war -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/Timesheet-spring-boot-core-data-jpa-mvc-REST-1-0.0.1.war"""
 			}
 		}
-    	stage('Building image') {
+        stage('Building image') {
             steps{
              script {
-				docker.build registry + ":$BUILD_NUMBER"
+             dockerImage = docker.build registry + ":$BUILD_NUMBER"
              }
             }
-        }   
+        }
+           
+        stage('Deploy our image') {
+            steps {
+             script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+                 }
+             }
+             }
+            }
         
 		}
 
