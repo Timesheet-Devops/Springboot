@@ -11,6 +11,7 @@ pipeline {
                 bat "cd Springboot"
                 bat """git checkout log4jtestEntreprise"""
                 bat "mvn clean"
+                bat "ren DockerFile Dockerfile"
             }
         }
         stage('install') {
@@ -42,6 +43,8 @@ pipeline {
         stage('Building image') {
             steps{
                 script {
+               
+                
                 docker.build registry + ":$BUILD_NUMBER"
                 }
             }
