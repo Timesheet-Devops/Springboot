@@ -7,7 +7,7 @@ pipeline {
         stage('git repo & clean') {
             steps {
                 bat "git clone https://github.com/Timesheet-Devops/Springboot.git"
-                bat "cd Springboot"
+                
                 bat """git checkout log4jtestEntreprise"""
                 bat "mvn clean"
                 
@@ -57,6 +57,10 @@ pipeline {
                  }
              }
              }
+            }
+            stage('Cleaning up') {
+            steps {
+            sh "docker rmi $registry"
             }
 			
 			
