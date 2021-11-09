@@ -30,7 +30,7 @@ pipeline {
      	}
      	stage ("Analyse avec Sonar"){
 			steps{
-				bat """mvn -Dmaven.test.skip=true -Dmaven.test.failure.ignore=true sonar:sonar -Dsonar.projectKey=918dfe1ad2f682f02b66066939bfe2fbee181756 -Dsonar.host.url=http://localhost:9000 -Dsonar.login=918dfe1ad2f682f02b66066939bfe2fbee181756 """
+				bat """sonar:sonar"""
 			}
 		}
 		stage ("Deploiement"){
